@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import * as BooksAPI from './BooksAPI'
 import PropTypes from 'prop-types'
 import Book from './Book.js'
+import {DebounceInput} from 'react-debounce-input';
 
 class Search extends React.Component {
 
-  static PropTypes = {
+  static propTypes = {
     addBookTo: PropTypes.func.isRequired,
     allBooks: PropTypes.array.isRequired
   }
@@ -46,7 +47,10 @@ class Search extends React.Component {
         <div className="search-books-bar">
           <Link to='/' className="close-search">Close</Link>
           <div className="search-books-input-wrapper">
-            <input type="text" placeholder="Search by title or author" onChange={this.doSearch}/>
+          <DebounceInput
+            minLength={1}
+            debounceTimeout={750}
+            type="text" placeholder="Search by title or author" onChange={this.doSearch}/>
           </div>
         </div>
         <div className="search-books-results">

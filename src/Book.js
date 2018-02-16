@@ -3,7 +3,7 @@ import SelectShelf from './SelectShelf.js'
 import PropTypes from 'prop-types'
 
 class Book extends React.Component {
-  static PropTypes = {
+  static propTypes = {
     addBookTo: PropTypes.func.isRequired,
     allBooks: PropTypes.array.isRequired,
     book: PropTypes.object.isRequired
